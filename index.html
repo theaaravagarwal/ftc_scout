@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MechaSearch</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.159.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.159.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="https://api.ftcscout.org">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preconnect" href="https://api.ftcscout.org">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://unpkg.com">
+</head>
+<body>
+    <canvas id="bg"></canvas>
+    <header class="landing-header">
+        <h1 class="landing-title">MechaSearch (21781)</h1>
+        <p class="landing-subtitle">Explore team statistics, match history, and performance analytics for FIRST Tech Challenge teams.</p>
+        <div class="landing-search">
+            <input type="text" id="teamNumber" placeholder="Enter Team Number">
+            <button onclick="searchTeam()">Search Team</button>
+        </div>
+    </header>
+    <main class="main-content">
+        <section id="teamInfo" class="hidden" content-visibility="auto">
+            <div class="team-header">
+                <div class="team-basic-info">
+                    <h2 id="teamName"></h2>
+                    <p id="teamLocation"></p>
+                </div>
+                <div class="season-selector-container hidden">
+                    <select id="seasonSelector"></select>
+                </div>
+                <div class="team-record">
+                    <span id="teamRecord"></span>
+                </div>
+            </div>
+            <div class="team-details">
+                <div id="teamBasicInfo"></div>
+                <div id="teamStats"></div>
+            </div>
+        </section>
+
+        <section id="stats-container" class="hidden">
+            <h2>Event Statistics</h2>
+        </section>
+
+        <section id="analytics-container" class="hidden">
+            <h2>Performance Analytics</h2>
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <canvas id="scoreProgressionChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="phaseBreakdownChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="performanceRadarChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="consistencyChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js" defer></script>
+</body>
+</html>
