@@ -300,24 +300,40 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .stats-grid {
+    .stats-grid,
+    .charts-grid {
         grid-template-columns: 1fr;
     }
     
+    .landing-search,
+    .team-search {
+        flex-direction: column;
+    }
+    
+    .landing-search input[type="text"],
+    .landing-search button,
     input[type="text"],
     button,
     select {
         width: 100%;
     }
     
-    .team-search {
-        flex-direction: column;
+    .landing-title {
+        font-size: 2.5rem;
+    }
+    
+    .landing-subtitle {
+        font-size: 1rem;
+    }
+    
+    .chart-container {
+        min-height: 300px;
     }
 }
 
 .animate-fade-in {
-    animation: fadeIn 0.5s ease-out forwards;
-    opacity: 0;
+    will-change: transform, opacity;
+    animation: fadeInUp 0.6s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -789,7 +805,7 @@ button,
 input[type="text"],
 select,
 section {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes shimmer {
@@ -830,4 +846,29 @@ section {
     .chart-container {
         min-height: 300px;
     }
+}
+
+.match-card,
+.event-section,
+.chart-container {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+.event-section,
+.match-card,
+.chart-container {
+    content-visibility: auto;
+    contain: content;
+    contain-intrinsic-size: 0 500px;
+}
+
+.animate-fade-in,
+.stats-grid,
+.match-card,
+button,
+input[type="text"],
+select,
+section {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
